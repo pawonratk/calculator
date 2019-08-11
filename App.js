@@ -9,265 +9,230 @@ constructor(props)
 super(props);
 this.state = 
 {
-num1 : 0,
-num2 : 0,
-output :0,
-count : 1,
-answer : 0,
-symbo:"",
-number1 :"",
-number2:""
+  num1 : 0,
+  num2 : 0,
+  output :0,
+  count : 1,
+  answer : 0,
+  symbo:'',
+  number1 :'',
+  number2:''
 }
 }
 btnPress(nam)
 {
-if(nam=="+")
-{
-this.setState({symbo:"+"});
-this.setState({count:2});
-this.setState({output:"+"});
-}
-else if(nam=="-")
-{
-this.setState({symbo:"-"});
-this.setState({count:2});
-this.setState({output:"-"});
-}
-else if(nam=="/")
-{
-this.setState({symbo:"/"});
-this.setState({count:2});
-this.setState({output:"/"});
-}
-else if(nam=="*")
-{
-this.setState({symbo:"*"});
-this.setState({count:2});
-this.setState({output:"*"});
-}
-else if(nam=="%")
-{
-this.setState({symbo:"%"});
-this.setState({count:2});
-this.setState({output:"%"});
-}
-else if(nam=="=")
-{
-if(this.state.symbo=="+")
-{
-var plus = this.state.num1 + this.state.num2;
-this.setState({output:plus});
-this.setState({count:1});
-this.setState({symbo:""});
-this.setState({number1:""});
-this.setState({number2:""});
-}
-else if(this.state.symbo =="-")
-{
-var minus = this.state.num1-this.state.num2;
-this.setState({output:minus});
-this.setState({count:1});
-this.setState({symbo:""});
-this.setState({number1:""});
-this.setState({number2:""});
-}
-else if(this.state.symbo=="*")
-{
-var multiply = this.state.num1*this.state.num2;
-this.setState({output:multiply});
-this.setState({count:1});
-this.setState({symbo:""});
-this.setState({number1:""});
-this.setState({number2:""});
-}
-else if(this.state.symbo=="/")
-{
-var divide = this.state.num1/this.state.num2;
-this.setState({output:divide});
-this.setState({count:1});
-this.setState({symbo:""});
-this.setState({number1:""});
-this.setState({number2:""});
-}
-else if(this.state.symbo=="%")
-{
-var mod = this.state.num1%this.state.num2;
-this.setState({output:mod});
-this.setState({count:1});
-this.setState({symbo:""});
-this.setState({number1:""});
-this.setState({number2:""});
-
-}
-}
-else if(nam=="AC")
-{
-this.setState({output:" "});
-this.setState({count:1});
-this.setState({symbo:""});
-this.setState({number1:""});
-this.setState({number2:""});
-}
+  switch(nam)
+  {
+    case '+' :  this.setState({symbo:'+'});
+                this.setState({count:2});
+                this.setState({output:'+'});
+                break;
+    case '-' :  this.setState({symbo:'-'});
+                this.setState({count:2});
+                this.setState({output:'-'});
+                break;
+    case '/'  : this.setState({symbo:'/'});
+                this.setState({count:2});
+                this.setState({output:'/'});
+                break;
+    case '*'  : this.setState({symbo:'*'});
+                this.setState({count:2});
+                this.setState({output:'*'});
+                break;
+    case '%'  : this.setState({symbo:'%'});
+                this.setState({count:2});
+                this.setState({output:'%'});
+                break;
+    case '='  : if(this.state.symbo=='+')
+                {
+                  var plus = this.state.num1 + this.state.num2;
+                  this.setState({output:plus});
+                  this.setState({count:1});
+                  this.setState({symbo:''});
+                  this.setState({number1:''});
+                  this.setState({number2:''});
+                }
+                else if(this.state.symbo =='-')
+                {
+                  var minus = this.state.num1-this.state.num2;
+                  this.setState({output:minus});
+                  this.setState({count:1});
+                  this.setState({symbo:''});
+                  this.setState({number1:''});
+                  this.setState({number2:''});
+                }
+                else if(this.state.symbo=='*')
+                {
+                  var multiply = this.state.num1*this.state.num2;
+                  this.setState({output:multiply});
+                  this.setState({count:1});
+                  this.setState({symbo:''});
+                  this.setState({number1:''});
+                  this.setState({number2:''});
+                }
+                else if(this.state.symbo=='/')
+                {
+                  var divide = this.state.num1/this.state.num2;
+                  this.setState({output:divide});
+                  this.setState({count:1});
+                  this.setState({symbo:''});
+                  this.setState({number1:''});
+                  this.setState({number2:''});
+                }
+                else if(this.state.symbo=='%')
+                {
+                  var mod = this.state.num1%this.state.num2;
+                  this.setState({output:mod});
+                  this.setState({count:1});
+                  this.setState({symbo:''});
+                  this.setState({number1:''});
+                  this.setState({number2:''});
+                }
+                break;
+    case 'AC' : this.setState({output:''});
+                this.setState({count:1});
+                this.setState({symbo:''});
+                this.setState({number1:''});
+                this.setState({number2:''});
+                break;
+                
+  }
 }
 numberPress(number)
 {
-if(number=="0")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"0"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"0"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-
-}
-}
-else if(number=="1")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"1"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"1"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-}
-else if (number=="2")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"2"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"2"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-}
-else if (number == "3")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"3"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"3"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-}
-else if (number == "4")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"4"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"4"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-}
-else if (number=="5")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"5"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"5"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-
-} 
-else if (number == "6")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"6"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"6"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-
-}
-else if (number== "7")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"7"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"7"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-
-}
-else if(number == "8")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"8"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"8"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-
-}
-else if (number == "9")
-{
-if(this.state.count == 1)
-{
-this.setState({number1:this.state.number1+"9"});
-this.setState({output:this.state.number1});
-this.setState({num1:Number(this.state.number1)});
-}
-else if(this.state.count == 2)
-{
-this.setState({number2:this.state.number2+"9"});
-this.setState({output:this.state.number2});
-this.setState({num2:Number(this.state.number2)});
-}
-}
+  switch(number)
+  {
+    case '0'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'0'});
+                  this.setState({output:this.state.number1});
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'0'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '1'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'1'});
+                  this.setState({output:this.state.number1});
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'1'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '2'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'2'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'2'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '3'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'3'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'3'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '4'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'4'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'4'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '5'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'5'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'5'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '6'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'6'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'6'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '7'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'7'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'7'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '8'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'8'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'8'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+    case '9'  : if(this.state.count == 1)
+                {
+                  this.setState({number1:this.state.number1+'9'});
+                  this.setState({output:this.state.number1}); 
+                  this.setState({num1:Number(this.state.number1)});
+                }
+                else if(this.state.count == 2)
+                {
+                  this.setState({number2:this.state.number2+'9'});
+                  this.setState({output:this.state.number2});
+                  this.setState({num2:Number(this.state.number2)});
+                }
+                break;
+  }
 }
 render() 
 {
@@ -287,89 +252,89 @@ style={{flex: 1}}
 <View style={{flex: 1, flexDirection: 'row',justifyContent: 'center'}}>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn3}
-onPress={()=>this.btnPress("AC")}><Text style = {styles.txtIn3}>AC</Text></TouchableOpacity>
+onPress={()=>this.btnPress('AC')}><Text style = {styles.txtIn3}>AC</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn3}><Text style = {styles.txtIn3}>+/-</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn3}
-onPress={()=>this.btnPress("%")}><Text style = {styles.txtIn3}>%</Text></TouchableOpacity>
+onPress={()=>this.btnPress('%')}><Text style = {styles.txtIn3}>%</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn4} 
-onPress={()=>this.btnPress("/")}><Text style = {styles.txtIn4}>÷</Text></TouchableOpacity>
+onPress={()=>this.btnPress('/')}><Text style = {styles.txtIn4}>÷</Text></TouchableOpacity>
 </View>
 </View>
 
 <View style={{flex: 1, flexDirection: 'row',justifyContent: 'center'}}>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("7")}><Text style = {styles.txtIn5}>7</Text></TouchableOpacity>
+onPress={()=>this.numberPress('7')}><Text style = {styles.txtIn5}>7</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("8")}><Text style = {styles.txtIn5}>8</Text></TouchableOpacity>
+onPress={()=>this.numberPress('8')}><Text style = {styles.txtIn5}>8</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("9")}><Text style = {styles.txtIn5}>9</Text></TouchableOpacity>
+onPress={()=>this.numberPress('9')}><Text style = {styles.txtIn5}>9</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn4}
-onPress={()=>this.btnPress("*")}><Text style = {styles.txtIn4}>x</Text></TouchableOpacity>
+onPress={()=>this.btnPress('*')}><Text style = {styles.txtIn4}>x</Text></TouchableOpacity>
 </View>
 </View>
 <View style={{flex: 1, flexDirection: 'row',justifyContent: 'center'}}>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("4")}><Text style = {styles.txtIn5}>4</Text></TouchableOpacity>
+onPress={()=>this.numberPress('4')}><Text style = {styles.txtIn5}>4</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("5")}><Text style = {styles.txtIn5}>5</Text></TouchableOpacity>
+onPress={()=>this.numberPress('5')}><Text style = {styles.txtIn5}>5</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("6")}><Text style = {styles.txtIn5}>6</Text></TouchableOpacity>
+onPress={()=>this.numberPress('6')}><Text style = {styles.txtIn5}>6</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn4}
-onPress={()=>this.btnPress("-")}><Text style = {styles.txtIn4}>-</Text></TouchableOpacity>
+onPress={()=>this.btnPress('-')}><Text style = {styles.txtIn4}>-</Text></TouchableOpacity>
 </View>
 </View>
 
 <View style={{flex: 1, flexDirection: 'row',justifyContent: 'center'}}>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("1")}><Text style = {styles.txtIn5}>1</Text></TouchableOpacity>
+onPress={()=>this.numberPress('1')}><Text style = {styles.txtIn5}>1</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("2")}><Text style = {styles.txtIn5}>2</Text></TouchableOpacity>
+onPress={()=>this.numberPress('2')}><Text style = {styles.txtIn5}>2</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress("3")}><Text style = {styles.txtIn5}>3</Text></TouchableOpacity>
+onPress={()=>this.numberPress('3')}><Text style = {styles.txtIn5}>3</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn4} 
-onPress={()=>this.btnPress("+")}><Text style = {styles.txtIn4}>+</Text></TouchableOpacity>
+onPress={()=>this.btnPress('+')}><Text style = {styles.txtIn4}>+</Text></TouchableOpacity>
 </View>
 </View>
 
 <View style={{flex: 1, flexDirection: 'row',justifyContent: 'center'}}>
 <View style={{flex: 2, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn6}
-onPress={()=>this.numberPress("0")}><Text style = {styles.txtIn6}>0</Text></TouchableOpacity>
+onPress={()=>this.numberPress('0')}><Text style = {styles.txtIn6}>0</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}} >
 <TouchableOpacity style={styles.btn5}
-onPress={()=>this.numberPress(",")}><Text style = {styles.txtIn5}>,</Text></TouchableOpacity>
+onPress={()=>this.numberPress(',')}><Text style = {styles.txtIn5}>,</Text></TouchableOpacity>
 </View>
 <View style={{flex: 1, backgroundColor: 'black'}}>
 <TouchableOpacity style={styles.btn4} 
-onPress={()=>this.btnPress("=")}><Text style = {styles.txtIn4}>=</Text></TouchableOpacity>
+onPress={()=>this.btnPress('=')}><Text style = {styles.txtIn4}>=</Text></TouchableOpacity>
 </View>
 </View>
 </View>
@@ -431,3 +396,4 @@ fontSize:30,
 color:'white'},
 }
 )
+
